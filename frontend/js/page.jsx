@@ -74,10 +74,4 @@ function Body(props) {
     )
 }
 
-function LightController(props) {
-    return (
-        <div>
-            uhh 
-        </div>
-    )
-}
+
