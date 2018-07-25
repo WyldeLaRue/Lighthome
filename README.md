@@ -8,7 +8,7 @@ Messing around with React and Pyramid.
 
 
 
-##Setting up the Pyramid server locally:
+## Setting up the Pyramid server locally:
 
 First we need to setup our virtual environment environment.
 ```
