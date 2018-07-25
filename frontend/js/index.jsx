@@ -1,8 +1,9 @@
 // index.jsx
 import React from  'react';
 import ReactDOM from 'react-dom';
-import Game from './game';
+import App from './App';
+// import Game from './game';
+// import Page from './page';
 import '../css/index.css';
 
-
-ReactDOM.render(<Game />, document.getElementById('content'));
+ReactDOM.render(<App />, document.getElementById('content'));
