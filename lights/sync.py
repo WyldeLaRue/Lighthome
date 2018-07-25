@@ -28,7 +28,6 @@ def light_process_mainloop(pipe_out):
         'pattern': 'rainbow',
         'clock_tick_size': 0.01
     }
-
     strip = Strip(300)
     clock_tick_size = 0.01
     time = 0
