@@ -1,6 +1,5 @@
 // App.jsx
 import React from 'react';
-import Game from './game';
 import Page from './page';
 
 
