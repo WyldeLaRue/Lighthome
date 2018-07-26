@@ -19,15 +19,6 @@ export default class Page extends React.Component {
 }   
 
 
-// function Navbar(props) {
-//     return (
-//         <p>
-//             You made it
-//         </p>
-//     );
-// }
-
-
 function Navbar(props) {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">

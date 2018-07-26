@@ -24,13 +24,13 @@ export default class AjaxTest extends React.Component {
                     Push me for ajax call
                 </button> 
             </div>
-        )
+        );
     }
 
 
     ajaxTest() {
         var testState = {test: 2};
-        fetch("api/v1/lights/getPatternInfo")
+        fetch("api/v1/lights/get_pattern_library")
             .then(res => res.json())
             .then(
                 (result) => {

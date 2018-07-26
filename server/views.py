@@ -5,13 +5,6 @@ from pyramid.renderers import render
 
 from lights import patterns
 
-# @view_config(route_name='home', renderer='templates/mytemplate.jinja2')
-# def my_view(request):
-#     return {'project': 'hello_pyramid'}
-
-
-
-
 # I really don't know why this works like it does... 
 @view_config(route_name='home')
 def test_page(request):
@@ -25,8 +18,16 @@ def test_page(request):
 
 
 
-@view_config(route_name='getPatternInfo', renderer='json')
-def getPatternInfo(request):
+@view_config(route_name='get_pattern_library', renderer='json')
+def get_pattern_library(request):
     pattern_library = patterns.pattern_library
     pattern_library_as_dict = dict( (key, vars(value) ) for key,value in pattern_library.items() )
     return pattern_library_as_dict
+
+@view_config(route_name='set_pattern')
+def set_pattern(request):
+    pattern_id = request.matchdict['pattern_id']
+    print("setting pattern to: " + pattern_id)
+    return Response('OK')
+
+

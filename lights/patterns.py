@@ -41,7 +41,7 @@ def clamp(number):
 
 class Rainbow(Pattern):
     def __init__(self):
-        self.api_name = "rainbow"
+        self.id_name = "rainbow"
         self.display_name = "Rainbow"
         self.test = 2
 
@@ -53,7 +53,7 @@ class Rainbow(Pattern):
 
 class RainbowCycle(Pattern):
     def __init__(self):
-        self.api_name = "rainbow_cycle"
+        self.id_name = "rainbow_cycle"
         self.display_name = "Rainbow Cycle"
 
     def get_color(self, index, time, **kwargs):

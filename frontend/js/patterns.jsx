@@ -1,44 +1,58 @@
 import React from 'react';
 
+// Pretty sure I'm not following proper react style at all here, but we'll fix that later
+
+
 export default class Pattern extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             error: null,
             isLoaded: false, 
-            items: []
+            patterns: []
         };
     }
 
     componentDidMount() {
-        fetch("/api/v1/lights/getPatternInfo")
+        fetch("/api/v1/lights/get_pattern_library")
             .then(res => res.json())
             .then(
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        items: Object.values(result)
+                        patterns: Object.values(result)
                     });
                 },
             )
     }   
 
     render() {
-        const {error, isLoaded, items} = this.state;
+        const {error, isLoaded, patterns} = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading......</div>;
         } else {
             return(
-                <ul>
-                    {items.map(item => (
-                        <li key={item.key}>
-                            {item.display_name}
-                        </li>
+                <div>
+                    {patterns.map(pattern => (
+                        <PatternButton 
+                                key={pattern.display_name}
+                                info={pattern}
+                        />
                     ))}
-                 </ul>
+                </div>
             );
         }    
     }
+}
+
+function PatternButton(props) {
+    const info = props.info
+    const url = "/api/v1/lights/set_pattern/" + info.id_name;
+    return ( 
+            <button onClick={() => {fetch(url)} }>
+                {info.display_name}
+            </button>
+    );
 }
