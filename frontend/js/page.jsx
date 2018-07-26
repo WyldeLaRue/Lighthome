@@ -1,6 +1,6 @@
 import React from 'react';
 import Pattern from './patterns';
-
+import AjaxTest from './ajaxTest';
 
 
 
@@ -10,6 +10,7 @@ export default class Page extends React.Component {
             <div>
                 <Navbar />
                 <Body />
+                <AjaxTest />
                 <Pattern />
             </div> 
        )    
