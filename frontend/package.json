@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "description": "",
+  "description": "frontend for local IOT server",
   "main": "index.js",
   "scripts": {
     "build": "webpack -p --progress --config webpack.config.js",

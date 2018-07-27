@@ -5,7 +5,8 @@ def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
     config = Configurator(settings=settings)
-    config.add_static_view(name='static', path='../frontend')
+    config.add_static_view(name='static', path='../frontend/static')
+    config.add_static_view(name='src', path='../frontend/src')
     routes(config)
     # config.add_route('react', '/test')
     # config.add_view(hello_world, route_name='react')

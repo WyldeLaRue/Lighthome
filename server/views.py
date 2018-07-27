@@ -7,9 +7,9 @@ from lights import patterns
 
 # I really don't know why this works like it does... 
 @view_config(route_name='home')
-def test_page(request):
+def index(request):
     response = FileResponse(
-        'frontend/index.html',
+        'frontend/static/index.html',
         request=request,
         content_type='text/html'
         )
