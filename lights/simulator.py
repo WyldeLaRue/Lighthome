@@ -1,7 +1,6 @@
 from tkinter import Tk, Label, Button, Canvas
 
 
-
 WINDOW_SIZE = 1200
 
 
@@ -41,6 +40,7 @@ class Strip:
 
     def begin(self):    # This is just to match the syntax of the neopixel library
         pass            # we don't need it to do anything.
+
 
 
 

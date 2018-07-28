@@ -61,7 +61,7 @@ function Body(props) {
         <div className="jumbotron">
             <div className="container">
                 <h1>Very. Large. Title.</h1>
-                <p>Are you ready to jump off a cliff? I probably should have a few paragraphs of placeholder text here.</p>
+                <p> It's 96 degrees and I'm slowly dying. Here is some placeholder text.</p>
             </div>
         </div>
     )
