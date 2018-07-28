@@ -33,3 +33,7 @@ and we can start it in development mode with
 ```
 pserve development.ini
 ```
+
+## Webpack
+navigate to ```homepage/frontend``` and then ```npm run watch```
+
