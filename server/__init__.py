@@ -1,8 +1,8 @@
+import multiprocessing
+
 from pyramid.config import Configurator
 
-import multiprocessing
 from . import routes
-
 from lights import controller
 
 def main(global_config, **settings):
