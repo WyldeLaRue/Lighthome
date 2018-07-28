@@ -11,8 +11,6 @@ class Color:
         return min(max(round(number), 0), 255)
 
 
-
-
 class Pattern:
     def __init__(self):
         self.name = "default"

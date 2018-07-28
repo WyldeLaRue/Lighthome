@@ -8,8 +8,6 @@ WINDOW_SIZE = 1200
 # strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
 
 
-
-
 class Strip:
     def __init__(self, led_count):
 
@@ -41,8 +39,10 @@ class Strip:
     def numPixels(self):
         return self.led_count
 
-    def begin(self):
-        pass
+    def begin(self):    # This is just to match the syntax of the neopixel library
+        pass            # we don't need it to do anything.
+
+
 
 
 

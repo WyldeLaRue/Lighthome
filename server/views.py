@@ -15,9 +15,6 @@ def index(request):
         )
     return response
 
-
-
-
 @view_config(route_name='get_pattern_library', renderer='json')
 def get_pattern_library(request):
     pattern_library = patterns.pattern_library
@@ -28,6 +25,12 @@ def get_pattern_library(request):
 def set_pattern(request):
     pattern_id = request.matchdict['pattern_id']
     print("setting pattern to: " + pattern_id)
+
+    global light_queue
+    light_queue.put({'active_pattern': pattern_id})
     return Response('OK')
+
+
+
 
 
