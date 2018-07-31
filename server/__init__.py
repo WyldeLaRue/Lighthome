@@ -3,7 +3,7 @@ import multiprocessing
 from pyramid.config import Configurator
 
 from . import routes
-from lights import controller
+from lights import process
 
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application. """
@@ -22,5 +22,5 @@ def create_light_process():
         multiprocessing.set_start_method('spawn')   #   Need this to prevent crash
     except RuntimeError:                            #
         pass                                        #
-    controller.light_controller.create_process()
-    controller.light_controller.start()
+    process.light_process_manager.create_process()
+    process.light_process_manager.start()

@@ -3,13 +3,11 @@ from tkinter import Tk, Label, Button, Canvas
 
 WINDOW_SIZE = 1200
 
-
 # strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
 
 
 class Strip:
     def __init__(self, led_count):
-
         self.led_count = led_count
         self.master = master = Tk()
         master.title("Simulating LED strip")

@@ -4,7 +4,7 @@ from pyramid.response import FileResponse
 from pyramid.renderers import render
 
 from lights import patterns
-from lights.controller import light_controller
+from lights.process import light_process_manager
 
 # I really don't know why this works like it does... 
 @view_config(route_name='home')
@@ -26,7 +26,7 @@ def get_pattern_library(request):
 def set_pattern(request):
     pattern_id = request.matchdict['pattern_id']
     print("setting pattern to: " + pattern_id)
-    light_controller.change_state({"pattern": pattern_id})
+    light_process_manager.change_state({"pattern": pattern_id})
     return Response('OK')
 
 
