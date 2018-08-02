@@ -1,6 +1,5 @@
-import React from 'react';
-import Pattern from './patterns';
-import AjaxTest from './ajaxTest';
+import React, { Component } from 'react'
+import { Menu, Segment, Header, Divider} from 'semantic-ui-react'
 
 
 
@@ -8,10 +7,9 @@ export default class Page extends React.Component {
     render() {
         return (
             <div>
-                <Navbar />
+                <DarkNavbar />
                 <Body />
-                <AjaxTest />
-                <Pattern />
+                <Divider hidden />
             </div> 
        )    
 
@@ -19,53 +17,43 @@ export default class Page extends React.Component {
 }   
 
 
-function Navbar(props) {
+
+class DarkNavbar extends Component {
+  state = { activeItem: 'home' }
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  render() {
+    const { activeItem } = this.state
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-          <a className="navbar-brand" href="#">Navbar</a>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
-              </li>
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
-                </a>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href="#">Action</a>
-                  <a className="dropdown-item" href="#">Another action</a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled" href="#">Disabled</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-    );
-}
-
-
-function Body(props) {
-    return (
-        <div className="jumbotron">
-            <div className="container">
-                <h1>Very. Large. Title.</h1>
-                <p> It's 96 degrees and I'm slowly dying. Here is some placeholder text.</p>
-            </div>
-        </div>
+      <Menu inverted>
+        <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
+        <Menu.Item
+          name='messages'
+          active={activeItem === 'messages'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='friends'
+          active={activeItem === 'friends'}
+          onClick={this.handleItemClick}
+        />
+      </Menu>
     )
+  }
 }
+
+
+
+
+const Body = () => (
+  <Segment color='Orange' textAlign='center'>
+    <Header as='h1'>Somewhat. Large. Title.</Header>
+    <p> It's 96 degrees and I'm slowly dying. Here is some placeholder text.</p>
+</Segment>
+)
+
 
 
 

@@ -1,9 +1,9 @@
 import React from 'react';
-
+import { Button } from 'semantic-ui-react';
 // Pretty sure I'm not following proper react style at all here, but we'll fix that later
 
 
-export default class Pattern extends React.Component {
+export default class PatternButtonContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,7 +34,7 @@ export default class Pattern extends React.Component {
             return <div>Loading......</div>;
         } else {
             return(
-                <div>
+                <div className="container">
                     {patterns.map(pattern => (
                         <PatternButton 
                                 key={pattern.display_name}
@@ -47,12 +47,18 @@ export default class Pattern extends React.Component {
     }
 }
 
+
+
 function PatternButton(props) {
     const info = props.info
     const url = "/api/v1/lights/set_pattern/" + info.id_name;
     return ( 
-            <button onClick={() => {fetch(url)} }>
-                {info.display_name}
-            </button>
+            <Button onClick={() => {fetch(url)} }
+                    content={info.display_name}
+            />
     );
 }
+
+
+
+

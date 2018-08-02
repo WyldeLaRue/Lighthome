@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button } from 'semantic-ui-react';
+
 
 export default class AjaxTest extends React.Component {
     constructor(props) {
@@ -17,12 +19,12 @@ export default class AjaxTest extends React.Component {
     render() {
         return(
             <div>
-                <button onClick={ () =>  {alert("hey")} }>
-                    Push me for hey
-                </button> 
-                <button onClick={ () => {this.ajaxTest()} }>
-                    Push me for ajax call
-                </button> 
+                <Button onClick={ () =>  {alert("hey")} }
+                        content='click here for hey'
+                 />
+                <Button onClick={ () => {this.ajaxTest()} }
+                        content='Push me for ajax call'
+                />
             </div>
         );
     }
