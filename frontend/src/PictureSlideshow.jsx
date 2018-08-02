@@ -2,10 +2,33 @@ import React, { Component } from 'react'
 import { Button, Divider, Image, Transition } from 'semantic-ui-react'
 
 export default class PictureSlidshow extends Component {
-  state = { visible: true }
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: true,
+            active: 0,
+            upNext: 1,
+            loading: 2
+        };
+        this.pictureList = [
+            '/static/images/nature/1.jpeg',
+            '/static/images/nature/1019.jpeg',
+            '/static/images/nature/128.jpeg',
+            '/static/images/nature/16.jpeg',
+            '/static/images/nature/235.jpeg',
+            '/static/images/nature/287.jpeg',
+            '/static/images/nature/511.jpeg',
+            '/static/images/nature/569.jpeg',
+            '/static/images/nature/813.jpeg',
+            '/static/images/nature/984.jpeg'
+        ]
+    }
   
-  toggleVisibility = () => this.setState({ visible: !this.state.visible })
+    toggleVisibility() {
+        this.setState({ visible: !this.state.visible })
+    }
 
+    
   render() {
     const { visible } = this.state
 
@@ -23,63 +46,13 @@ export default class PictureSlidshow extends Component {
               <Image centered size='small' src='/static/images/nature/16.jpeg' />
             </Transition>
         </div>
+        <div style={{ position:'absolute' }}>
+            <Transition visible={!visible} animation='fade' duration={1500}>
+              <Image centered size='small' src='/static/images/nature/16.jpeg' />
+            </Transition>
+        </div>
       </div>
     )
   }
 }
 
-// import React, { Component } from 'react'
-// import { Form, Grid, Image, Transition } from 'semantic-ui-react'
-
-// export default class TransitionExampleDuration extends Component {
-//   state = { hide: 500, show: 500, visible: true }
-
-//   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-
-//   toggleVisibility = () => this.setState({ visible: !this.state.visible })
-
-//   render() {
-//     const { hide, show, visible } = this.state
-
-//     return (
-//     <div>
-//       <Grid columns={2}>
-//         <Grid.Column as={Form}>
-//           <Form.Input
-//             label={`Hide duration: ${hide}ms `}
-//             min={100}
-//             max={5000}
-//             name='hide'
-//             onChange={this.handleChange}
-//             step={100}
-//             type='range'
-//             value={hide}
-//           />
-//           <Form.Input
-//             label={`Show duration: ${show}ms `}
-//             min={100}
-//             max={5000}
-//             name='show'
-//             onChange={this.handleChange}
-//             step={100}
-//             type='range'
-//             value={show}
-//           />
-//           <Form.Button content='Run' onClick={this.toggleVisibility} />
-//         </Grid.Column>
-//             <p> Test </p>
-//         <Grid.Column>
-
-//         </Grid.Column>
-//       </Grid>
-
-//         <Transition duration={{ hide, show }} visible={visible}>
-//           <Image src='https://react.semantic-ui.com/images/leaves/3.png' />
-          
-//         </Transition>
-//     </div>
-
-//     )
-//   }
-// }
-// <Image src='/static/images/nature/1.jpeg' />

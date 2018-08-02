@@ -1,73 +1,83 @@
+import _ from 'lodash'
 import React, { Component } from 'react'
-import { Form, Grid, Image, Transition } from 'semantic-ui-react'
+import { Button, Image, List, Transition } from 'semantic-ui-react'
 
-const transitions = [
-  'browse',
-  'browse right',
-  'drop',
-  'fade',
-  'fade up',
-  'fade down',
-  'fade left',
-  'fade right',
-  'fly up',
-  'fly down',
-  'fly left',
-  'fly right',
-  'horizontal flip',
-  'vertical flip',
-  'scale',
-  'slide up',
-  'slide down',
-  'slide left',
-  'slide right',
-  'swing up',
-  'swing down',
-  'swing left',
-  'swing right',
-  'zoom',
-]
-const options = transitions.map(name => ({ key: name, text: name, value: name }))
+const users = ['ade', 'chris', 'christian', 'daniel', 'elliot', 'helen']
+const images = [
+            '/static/images/nature/1.jpeg',
+            '/static/images/nature/1019.jpeg',
+            '/static/images/nature/128.jpeg',
+            '/static/images/nature/16.jpeg',
+            '/static/images/nature/235.jpeg',
+            '/static/images/nature/287.jpeg',
+            '/static/images/nature/511.jpeg',
+            '/static/images/nature/569.jpeg',
+            '/static/images/nature/813.jpeg',
+            '/static/images/nature/984.jpeg'
+        ]
 
 export default class Test extends Component {
-  state = { animation: transitions[0], duration: 500, visible: true }
+    constructor(props) {
+        super(props);
+        this.state = { 
+            items: [images[0]],
+            current: 0,
+            paused: false
+        }
+    }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+    nextImage() {
+        const current = (this.state.current + 1) % images.length
+        this.setState({
+            current: current,
+            items: [images[current]]
+        })
+    }
 
-  handleVisibility = () => this.setState({ visible: !this.state.visible })
+    prevImage() {
+        const current = (this.state.current + - 1 + images.length) % images.length
+        this.setState({
+            current: current,
+            items: [images[current]]
+        })
+    }
+
+
+    componentDidMount() {
+        this.setState({paused: false});
+        this.timer = setInterval(
+            () => this.nextImage(),
+            7000
+        );
+    }
+
+    componentWillUnmount() {
+       clearInterval(this.timer);
+    }
 
   render() {
-    const { animation, duration, visible } = this.state
+    const items = this.state.items
+    const current = this.state.current
+    const paused = this.state.paused
 
+    // I really don't know why we need the => in the bottom
     return (
-      <Grid columns={2}>
-        <Grid.Column as={Form}>
-          <Form.Select
-            label='Choose transition'
-            name='animation'
-            onChange={this.handleChange}
-            options={options}
-            value={animation}
-          />
-          <Form.Input
-            label={`Duration: ${duration}ms `}
-            min={100}
-            max={2000}
-            name='duration'
-            onChange={this.handleChange}
-            step={100}
-            type='range'
-            value={duration}
-          />
-          <Form.Button content={visible ? 'Unmount' : 'Mount'} onClick={this.handleVisibility} />
-        </Grid.Column>
+      <div>
+        <Button.Group>
+          <Button icon='minus' onClick={() => this.prevImage()} />
+          <Button icon='plus' onClick={() => this.nextImage()} />
+          <Button content={this.state.current} />
+          <Button content={paused ? "Unpause" : "Pause"}  onClick={ () => this.setState({paused: !paused}) }/>
+        </Button.Group>
 
-        <Grid.Column>
-          <Transition.Group animation={animation} duration={duration}>
-            {visible && <Image src='/static/images/nature/1.jpeg' />}
-          </Transition.Group>
-        </Grid.Column>
-      </Grid>
+        <Transition.Group as={List} duration={2000} divided size='huge' verticalAlign='middle'>
+          {items.map(item => (
+            <div style={{ position:'absolute' }} key={item}>
+                <Image src={item} />
+            </div>    
+          ))}
+        </Transition.Group>
+      </div>
     )
   }
 }

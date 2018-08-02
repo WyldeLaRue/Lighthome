@@ -16,13 +16,9 @@ export default class App extends React.Component {
                 <AjaxTest />
                 <Pattern />
                 
-
-
                 <Container>
-                    <PictureSlidshow />
+                    <Test />
                 </Container>
-
-
             </div>
         );
     }
