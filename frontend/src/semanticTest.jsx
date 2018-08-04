@@ -2,7 +2,6 @@ import _ from 'lodash'
 import React, { Component } from 'react'
 import { Button, Image, List, Transition } from 'semantic-ui-react'
 
-const users = ['ade', 'chris', 'christian', 'daniel', 'elliot', 'helen']
 const images = [
             '/static/images/nature/1.jpeg',
             '/static/images/nature/1019.jpeg',
@@ -47,7 +46,7 @@ export default class Test extends Component {
         this.setState({paused: false});
         this.timer = setInterval(
             () => this.nextImage(),
-            7000
+            30000
         );
     }
 

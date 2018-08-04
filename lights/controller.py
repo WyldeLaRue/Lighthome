@@ -2,7 +2,7 @@ import multiprocessing
 from queue import Empty
 from time import sleep
 import json
-
+import sys
 
 from .patterns import pattern_library
 
@@ -33,8 +33,8 @@ class LightController:
         with open('light-config.json') as config_file:
             config = json.load(config_file)
 
-
-        if config['simulation'] == True:
+        # if config['simulation'] == True:
+        if sys.platform == "darwin":
             from .simulator import Strip
             settings = config['simulation_settings']
             strip = Strip(settings['led_count'])
