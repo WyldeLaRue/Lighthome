@@ -16,14 +16,15 @@ export default class App extends React.Component {
                 <AjaxTest />
                 <Pattern />
                 
-                <Container>
-                    <Test />
-                </Container>
+
             </div>
         );
     }
 }
 
+             //   <Container>
+             //       <Test />
+             //   </Container>
 
                 // <Divider />
                 //     <Header as='h1'>Debug</Header>
