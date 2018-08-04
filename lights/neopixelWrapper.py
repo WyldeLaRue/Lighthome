@@ -1,10 +1,4 @@
-import time
-import colorsys
-from . import shared
 import neopixel
-import math
-import random
-
 
 # LED_COUNT      = 300       # Number of LED pixels.
 # LED_PIN        = 18      # GPIO pin connected to the pixels (must support PWM!).
