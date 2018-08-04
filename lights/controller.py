@@ -41,7 +41,7 @@ class LightController:
         else:
             from .neopixelWrapper import Strip
             settings = config['neopixel_settings']      # unfinished
-            strip = Strip(settings)
+            strip = Strip(**settings)
         self.strip = strip
 
     def check_queue(self):
