@@ -1,10 +1,10 @@
 // App.jsx
 import React from 'react';
 import Page from './page';
-import Test from './semanticTest';
-import Pattern from './patterns';
+// import Test from './semanticTest';
+import PatternButtonContainer from './patterns';
 import AjaxTest from './ajaxTest';
-import PictureSlidshow from './PictureSlideshow';
+// import PictureSlidshow from './PictureSlideshow';
 import { Container, Divider, Header } from 'semantic-ui-react';
 
 export default class App extends React.Component {
@@ -12,11 +12,9 @@ export default class App extends React.Component {
         return (
             <div>
                 <Page />
-
                 <AjaxTest />
-                <Pattern />
-                
-
+                <PatternButtonContainer />
+                <p> test????? </p>
             </div>
         );
     }
