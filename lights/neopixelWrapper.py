@@ -21,9 +21,9 @@ class Strip:
         led_invert = kwargs["led_invert"]
         led_channel = kwargs["led_channel"]
         #self.neopixel_strip = neopixel.Adafruit_NeoPixel(led_count, led_pin, led_freq_hz, led_dma, led_invert, led_brightness, led_channel, neopixel.ws.SK6812_STRIP_RGBW)
-        neopixel_strip = neopixel.Adafruit_NeoPixel(led_count, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
-        neopixel_strip.begin()
-        
+        self.neopixel_strip = neopixel.Adafruit_NeoPixel(led_count, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
+        self.neopixel_strip.begin()
+
     def setPixelColor(self, index, color):
         neopixel_color = neopixel.Color(color.green, color.red, color.blue, color.white)
         self.neopixel_strip.setPixelColor(index, neopixel_color)
