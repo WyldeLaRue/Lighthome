@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Container } from 'semantic-ui-react';
 // Pretty sure I'm not following proper react style at all here, but we'll fix that later
 
 
@@ -34,14 +34,16 @@ export default class PatternButtonContainer extends React.Component {
             return <div>Loading......</div>;
         } else {
             return(
-                <div className="container">
-                    {patterns.map(pattern => (
-                        <PatternButton 
-                                key={pattern.display_name}
-                                info={pattern}
-                        />
-                    ))}
-                </div>
+                <Container textAlign='center'>
+                    <Button.Group vertical>
+                        {patterns.map(pattern => (
+                            <PatternButton 
+                                    key={pattern.display_name}
+                                    info={pattern}
+                            />
+                        ))}
+                    </Button.Group>
+                </Container>
             );
         }    
     }
@@ -55,6 +57,7 @@ function PatternButton(props) {
     return ( 
             <Button onClick={() => {fetch(url)} }
                     content={info.display_name}
+                    color="Purple"
             />
     );
 }

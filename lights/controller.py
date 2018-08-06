@@ -8,14 +8,13 @@ from .patterns import pattern_library
 
 
 
-SIM = True
 
 
 class LightController:
     def __init__(self, queue):
         self.state = {
             "pattern": "rainbow",
-            "time": 0,
+            "clock_time": 0,
             "clock_tick_size": 0.001,
             "brightness": 0.5
         }
@@ -35,10 +34,12 @@ class LightController:
             from .simulator import Strip
             settings = config['simulation_settings']
             strip = Strip(settings['led_count'])
+            self.SIM = True
         else:
             from .neopixelWrapper import Strip
             settings = config['neopixel_settings']      # unfinished
             strip = Strip(**settings)
+            self.SIM = False
         self.strip = strip
 
     def check_queue(self):
@@ -56,16 +57,19 @@ class LightController:
         strip = self.strip
         while True:
             active_pattern = self.pattern_library[self.state['pattern']]
+            time = self.state['clock_time']
 
             for pixel_index in range(strip.numPixels()):
-                color = active_pattern.get_color(pixel_index, self.state['time'])
-                color.voltageOffset(pixel_index)
-                color.setBrightness(self.state['brightness'])
+                color = active_pattern.get_color(pixel_index, time, **self.state)
+                if not self.SIM:
+                    color.voltageOffset(pixel_index)
+                    color.setBrightness(self.state['brightness'])
+                
                 strip.setPixelColor(pixel_index, color)
             strip.show()
-            sleep(active_pattern.get_wait_time(self.state['time']))
+            sleep(active_pattern.get_wait_time(self.state['clock_time']))
 
-            self.state['time'] = (self.state['time'] + self.state['clock_tick_size']) % 1
+            self.state['clock_time'] = (self.state['clock_time'] + self.state['clock_tick_size']) % 1
             self.check_queue()
 
 

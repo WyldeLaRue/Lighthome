@@ -13,12 +13,12 @@
   "license": "ISC",
   "babel": {
     "presets": [
-        "env",
-        "react"
+      "env",
+      "react"
     ],
-    "plugins": [ 
-        "transform-class-properties",
-        "lodash"
+    "plugins": [
+      "transform-class-properties",
+      "lodash"
     ]
   },
   "devDependencies": {
