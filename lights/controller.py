@@ -16,7 +16,7 @@ class LightController:
         self.state = {
             "pattern": "rainbow",
             "time": 0,
-            "clock_tick_size": 0.01,
+            "clock_tick_size": 0.001,
             "brightness": 0.5
         }
         self.queue = queue

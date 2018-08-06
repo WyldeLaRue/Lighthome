@@ -35,7 +35,7 @@ class Pattern:
 
 
     def get_wait_time(self, time, **kwargs):
-        return 0.1
+        return 0.01
 
 
 # Auxillary Functions
@@ -56,6 +56,7 @@ class Rainbow(Pattern):
     def get_color(self, index, time, **kwargs):
         red, green, blue = colorsys.hsv_to_rgb(time, 1, 1)
         return Color(255*red, 255*green, 255*blue)
+
 
 
 
