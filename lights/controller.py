@@ -10,10 +10,6 @@ from .patterns import pattern_library
 
 SIM = True
 
-""" 
-At some point, I should maybe split this into two objects. One that just handles the lights and lives in the new process
-and one that handles remembering the pid and stuff and has the routines for passing stuff through the queue.
-"""
 
 class LightController:
     def __init__(self, queue):
@@ -21,6 +17,7 @@ class LightController:
             "pattern": "rainbow",
             "time": 0,
             "clock_tick_size": 0.01
+            "brightness" = 0.5
         }
         self.queue = queue
         self.pattern_library = pattern_library
@@ -54,7 +51,7 @@ class LightController:
 
         if received_data is not None:
             self.update_state(received_data)
-
+    
     def mainloop(self):
         strip = self.strip
         while True:
@@ -62,6 +59,8 @@ class LightController:
 
             for pixel_index in range(strip.numPixels()):
                 color = active_pattern.get_color(pixel_index, self.state['time'])
+                color.voltageOffset(pixel_index)
+                color.setBrightness(self.state['brightness'])
                 strip.setPixelColor(pixel_index, color)
             strip.show()
             sleep(active_pattern.get_wait_time(self.state['time']))

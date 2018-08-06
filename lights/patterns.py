@@ -10,6 +10,16 @@ class Color:
     def clamp(self, number):
         return min(max(round(number), 0), 255)
 
+    def setBrightness(self, brightness):
+        self.red = round(brightness * self.red)
+        self.green = round(brightness * self.green)
+        self.blue = round(brightness * self.blue)
+        self.white = round(brightness * self.white)
+
+    def voltageOffset(self, index):
+        position = index/299.0
+        self.red =  (1 - 0.5*position) * self.red
+
 
 class Pattern:
     def __init__(self):
