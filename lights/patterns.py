@@ -82,6 +82,6 @@ class AdjustedRainbowCycle(Pattern):
 
 pattern_library = {
     "rainbow": Rainbow(),
-    "rainbow_cycle": RainbowCycle()
+    "rainbow_cycle": RainbowCycle(),
     "adjusted_rainbow_cycle": AdjustedRainbowCycle()
 }
