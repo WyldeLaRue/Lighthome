@@ -70,7 +70,15 @@ class RainbowCycle(Pattern):
         red, green, blue = colorsys.hsv_to_rgb(normalized_sum, 1, 1)
         return Color(255*red, 255*green, 255*blue)
 
-
+class AdjustedRainbowCycle(Pattern):
+    def __init__(self):
+        self.id_name = "adjusted_rainbow_cycle"
+        self.display_name = "Adjusted Rainbow Cycle"
+        
+    def get_color(self, index, time, **kwargs):
+        normalized_sum = (index/300.0 + time) % 1
+        red, green, blue = colorsys.hsv_to_rgb(normalized_sum, 1, 1)
+        return Color(255*red, 255*green, 255*blue)
 
 pattern_library = {
     "rainbow": Rainbow(),
