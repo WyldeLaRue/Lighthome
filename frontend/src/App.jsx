@@ -7,7 +7,7 @@ import AjaxTest from './ajaxTest';
 // import PictureSlidshow from './PictureSlideshow';
 import { Container, Divider, Header } from 'semantic-ui-react';
 
-
+// scp /Users/tristan/projects/homepage/frontend/static/dist/bundle.js pi@fishflag:~/projects/homepage/frontend/static/dist/bundle.js
 export default class App extends React.Component {
     render () {
         return (
