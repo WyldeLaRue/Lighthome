@@ -1,4 +1,4 @@
-# homepage
+# Lighthome
 Messing around with React and Pyramid.
 
 
