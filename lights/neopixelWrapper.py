@@ -1,4 +1,4 @@
-from rpi_ws281x import neopixel
+import rpi_ws281x as neopixel
 
 
 LED_COUNT      = 300       # Number of LED pixels.
