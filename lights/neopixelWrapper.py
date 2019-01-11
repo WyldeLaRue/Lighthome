@@ -1,4 +1,4 @@
-import neopixel
+from rpi_ws281x import neopixel
 
 
 LED_COUNT      = 300       # Number of LED pixels.
@@ -24,10 +24,10 @@ class Strip:
         self.neopixel_strip = neopixel.Adafruit_NeoPixel(led_count, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
         self.neopixel_strip.begin()
 
-    def setPixelColor(self, index, color):
-        neopixel_color = neopixel.Color(color.green, color.red, color.blue, color.white)
-        self.neopixel_strip.setPixelColor(index, neopixel_color)
-
+    def setPixelColor(self, index, color): 
+        neopixel_color = neopixel.Color(color.green, color.red, color.blue) #, color.white)
+        self.neopixel_strip.setPixelColor(index, neopixel_color)            # the updated rpi_WS281x package seems to have given up 
+                                                                            # support for rgbw strips. We'll just block white for now. 
     def show(self):
         self.neopixel_strip.show()
 

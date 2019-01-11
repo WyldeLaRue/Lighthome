@@ -5,6 +5,7 @@ from pyramid.renderers import render
 
 from lights import patterns
 from lights.process import light_process_manager
+from outlets import outlets
 
 # I really don't know why this works like it does... 
 @view_config(route_name='home')
@@ -28,6 +29,16 @@ def set_pattern(request):
     print("setting pattern to: " + pattern_id)
     light_process_manager.change_state({"pattern": pattern_id})
     return Response('OK')
+
+
+@view_config(route_name='set_outlet_state')
+def set_outlet_state(request):
+    new_state = request.matchdict['state']
+    outlet_id = request.matchdict['outlet_id']
+    outlets.send_outlet_signal(new_state, outlet_id)
+    return Response('OK')
+
+
 
 
 

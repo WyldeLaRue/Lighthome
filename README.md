@@ -5,6 +5,9 @@ This is an updated version of my previous project [Tristan-IOT](https://github.c
 The entire codebase was rewritten into React/Pyramid with a more focused design. There are a few features that still haven't been migrated over.
 
 
+
+
+
 ### Strip Simulator
 I also wrote a simulator for this project in tkinter so that it can be run/debugged when I am not at home or don't want to mess around with the physical lights. As of now, it looks at your OS to determine whether or not to run in simulation mode. If you are running Linux, it is possible there will be issues for this reason. I have not tested this.
 
@@ -17,8 +20,47 @@ I'm currently using a RGBW SK6812 strip. If you want to follow this setup, be ve
 
 I also am using etekcity remote controlled outlets along with a transmitter/receiver for copying the signal. After much investigation, this appears to be the cheapest (around $14) method for constructed IOT enabled power outlets. This comes at the downside of relying on a radio signal, so everything must be roughly in the same room as the RPi without doing anything more creative.
 
+
+First we need to install wiringPi, which allows us to write to the GPIO pins.
+```
+cd ~
+git clone git://git.drogon.net/wiringPi
+cd wiringPi
+./build
+```
+This can also be done via apt-get which is probably a better choice.
+
+
+Now the 433 utils to use the RF receiver/sender
+```
+cd ~
+git clone https://github.com/ninjablocks/433Utils
+cd 433Utils 
+make
+mv ./codesend /usr/bin
+```
+Since we already know what our RF codes look like, we don't need the RFsniffer for now. And lets add ourselves to the gpio group. 
+
+
+reference:
+https://chester.me/archives/2017/12/controlling-rf-outlets-from-a-raspberry-pi/
+
+
+
+Now we install homebdrige using the instructions in the wiki. First we need GCC 8.
+
+```https://github.com/nfarina/homebridge/wiki/Running-HomeBridge-on-a-Raspberry-Pi```
+
+We use systemd to have it run at startup. Following this guide  
+```https://timleland.com/setup-homebridge-to-start-on-bootup/```
+
+made it to step 4
+
+
 ### Dependencies
 This project heavily relies on the wonderful [rpi_ws281x](https://github.com/jgarff/rpi_ws281x) library to interface between the raspberry pi and light strip.
+
+
 
 
 ## Running Locally
