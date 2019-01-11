@@ -1,6 +1,6 @@
 import subprocess
 
-def send_outlet_signal(new_state, outlet_id)
+def send_outlet_signal(new_state, outlet_id):
     frequency_table = {
         "on":  {'1': 87347,
                 '2': 87491,
