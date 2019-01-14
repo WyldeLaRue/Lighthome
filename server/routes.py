@@ -24,5 +24,6 @@ def lights_api_endpoints(config):
 
 # prefix: /api/version/iot/
 def iot_api_endpoints(config):
-    config.add_route('set_outlet_state', '/outlets/set/{outlet_id}/{state}')
+    config.add_route('set_outlet_state', '/outlets/{outlet_id}/set')
+    config.add_route('get_outlet_state', '/outlets/{outlet_id}/get')
 

@@ -6,7 +6,7 @@ function mySwitch(log, config) {
   this.getUrl = url.parse(config['getUrl']);
   this.postUrl = url.parse(config['postUrl']);
 }
- 
+  
 mySwitch.prototype = {
   getSwitchOnCharacteristic: function (next) {
     const me = this;

@@ -33,10 +33,16 @@ def set_pattern(request):
 
 @view_config(route_name='set_outlet_state')
 def set_outlet_state(request):
-    new_state = request.matchdict['state']
+    params = request.params
+    new_state = params['targetState']
     outlet_id = request.matchdict['outlet_id']
     outlets.send_outlet_signal(new_state, outlet_id)
     return Response('OK')
+
+@view_config(route_name='get_outlet_state', renderer='json')
+def get_outlet_state(request):
+    return  {'currentState': 'On'}
+
 
 
 
