@@ -42,8 +42,9 @@ def set_outlet_state(request):
 @view_config(route_name='get_outlet_state', renderer='json')
 def get_outlet_state(request):
     response = Response(
-        json = {'currentState': 'On'},
-        content_type = "application/json"
+        json = {'currentState': 'On', 'test': 'hell0 world'},
+        content_type = "application/json",
+        status = "OK"
     )
     return  response
 
