@@ -14,7 +14,7 @@ def index(request):
         'frontend/static/index.html',
         request=request,
         content_type='text/html'
-        )
+    )
     return response
 
 @view_config(route_name='get_pattern_library', renderer='json')
@@ -41,7 +41,10 @@ def set_outlet_state(request):
 
 @view_config(route_name='get_outlet_state', renderer='json')
 def get_outlet_state(request):
-    return  {'currentState': 'On'}
+    response = Response(
+        json = {'currentState': 'On'}
+    )
+    return  response
 
 
 
