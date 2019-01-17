@@ -37,7 +37,11 @@ def set_outlet_state(request):
     new_state = params['targetState']
     outlet_id = request.matchdict['outlet_id']
     outlets.send_outlet_signal(new_state, outlet_id)
-    return Response('OK')
+    response = Response(
+        status = 204
+    )
+    return response
+
 
 @view_config(route_name='get_outlet_state', renderer='json')
 def get_outlet_state(request):
