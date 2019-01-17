@@ -1,20 +1,28 @@
-
-const Service, Characteristic;
+const request = require('requests');
+const url = require('url');
  
+var Service, Characteristic;
+
 module.exports = function (homebridge) {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
-  homebridge.registerAccessory("switch-plugin", "MyAwesomeSwitch", mySwitch);
+  homebridge.registerAccessory("homebridge-tristan-plugin", "Homelight", mySwitch);
 };
 
+function mySwitch(log, config) {
+  this.log = log;
+  this.getUrl = url.parse(config['getUrl']);
+  this.postUrl = url.parse(config['postUrl']);
+  this.displayName = config['name'];
+}
+  
 mySwitch.prototype = {
   getServices: function () {
     let informationService = new Service.AccessoryInformation();
     informationService
-      .setCharacteristic(Characteristic.Manufacturer, "My switch manufacturer")
-      .setCharacteristic(Characteristic.Model, "My switch model")
-      .setCharacteristic(Characteristic.SerialNumber, "123-456-789");
- 
+      .setCharacteristic(Characteristic.Manufacturer, "Tristan Inc")
+      .setCharacteristic(Characteristic.Model, "Model 0")
+      .setCharacteristic(Characteristic.SerialNumber, "554-54-58");
     let switchService = new Service.Switch("My switch");
     switchService
       .getCharacteristic(Characteristic.On)
@@ -24,19 +32,7 @@ mySwitch.prototype = {
     this.informationService = informationService;
     this.switchService = switchService;
     return [informationService, switchService];
-  }
-};
-
-const request = require('request');
-const url = require('url');
- 
-function mySwitch(log, config) {
-  this.log = log;
-  this.getUrl = url.parse(config['getUrl']);
-  this.postUrl = url.parse(config['postUrl']);
-}
-  
-mySwitch.prototype = {
+  },
   getSwitchOnCharacteristic: function (next) {
     const me = this;
     request({
@@ -52,7 +48,6 @@ mySwitch.prototype = {
       return next(null, body.currentState);
     });
   },
-   
   setSwitchOnCharacteristic: function (on, next) {
     const me = this;
     request({

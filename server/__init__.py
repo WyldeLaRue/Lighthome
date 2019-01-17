@@ -23,4 +23,5 @@ def create_light_process():
     except RuntimeError:                            #
         pass                                        #
     process.light_process_manager.create_process()
-    process.light_process_manager.start()
+#    process.light_process_manager.start()
+

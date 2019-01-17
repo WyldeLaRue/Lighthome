@@ -1,11 +1,15 @@
 {
-  "name": "TristanLights",
+  "name": "homebridge-tristan-plugin",
   "version": "0.0.1",
   "description": "Sample Platform plugin for homebridge: https://github.com/nfarina/homebridge",
   "license": "ISC",
   "keywords": [
     "homebridge-plugin"
   ],
+  "dependencies": {
+    "requests": "^0.2.2",
+    "url": "^0.11.0"
+  },
   "engines": {
     "node": ">=0.12.0",
     "homebridge": ">=0.2.0"
