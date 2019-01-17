@@ -33,7 +33,6 @@ mySwitch.prototype = {
     return [informationService, switchService];
   },
   getSwitchOnCharacteristic: function (next) {
-    const me = this;
     request({
         url: this.getUrl,
         method: 'GET'
@@ -48,17 +47,16 @@ mySwitch.prototype = {
     });
   },
   setSwitchOnCharacteristic: function (on, next) {
-    const me = this;
     request({
-      url: me.postUrl,
-      body: {'targetState': on},
+      url: this.postUrl,
       method: 'POST',
+      body: {'targetState': on},
       headers: {'Content-type': 'application/json'}
     },
     function (error, response) {
       if (error) {
-        me.log('STATUS: ' + response.statusCode);
-        me.log(error.message);
+        this.log('STATUS: ' + response.statusCode);
+        this.log(error.message);
         return next(error);
       }
       return next();
