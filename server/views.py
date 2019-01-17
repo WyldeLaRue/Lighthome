@@ -44,7 +44,7 @@ def get_outlet_state(request):
     response = Response(
         json = {'currentState': 'On', 'test': 'hell0 world'},
         content_type = "application/json",
-        status = "200"
+        status = 200
     )
     return  response
 
