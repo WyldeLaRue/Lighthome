@@ -22,6 +22,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -36,6 +37,7 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
+    "babel-plugin-lodash": "^3.3.4",
     "hoek": "^5.0.3",
     "npm": "^6.2.0",
     "semantic-ui-less": "^2.3.3",
