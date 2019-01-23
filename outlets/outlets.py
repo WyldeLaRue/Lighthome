@@ -16,6 +16,5 @@ def send_outlet_signal(new_state, outlet_id):
         }
     }
     frequency = frequency_table[new_state.lower()][str(outlet_id)]
-    shell_cmd = 'codesend %d -l 180 -p 0' % frequency
-    print(shell_cmd)
+    shell_cmd = 'codesend %d -l 200' % frequency
     subprocess.call(shell_cmd, shell=True)
