@@ -10,6 +10,7 @@ from outlets import outlets
 # I really don't know why this works like it does... 
 @view_config(route_name='home')
 def index(request):
+    primt('HTTP Request -- home')
     response = FileResponse(
         'frontend/static/index.html',
         request=request,
