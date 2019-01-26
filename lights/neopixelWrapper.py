@@ -1,4 +1,4 @@
-import rpi_ws281x as neopixel
+import neopixel
 
 
 LED_COUNT      = 300       # Number of LED pixels.
@@ -30,6 +30,7 @@ class Strip:
                                                                             # support for rgbw strips. We'll just block white for now. 
     def show(self):
         self.neopixel_strip.show()
+        pass
 
     def numPixels(self):
         return self.neopixel_strip.numPixels()
