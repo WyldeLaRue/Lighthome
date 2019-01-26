@@ -15,6 +15,10 @@ def send_outlet_signal(new_state, outlet_id):
                 '5': 95500
         }
     }
+    if new_state == True:
+        new_state = "ON"
+    if new_state == False:
+        new_state = "OFF"
     frequency = frequency_table[new_state.lower()][str(outlet_id)]
     shell_cmd = 'codesend %d -l 200' % frequency
     subprocess.call(shell_cmd, shell=True)
