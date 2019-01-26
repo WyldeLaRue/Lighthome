@@ -24,4 +24,5 @@ def create_light_process():
         pass                                        #
     process.light_process_manager.create_process()
     process.light_process_manager.start()
+    print("Light process started. Running at PID ", process.light_process_manager.pid)
 

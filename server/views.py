@@ -7,16 +7,18 @@ from lights import patterns
 from lights.process import light_process_manager
 from outlets import outlets
 
+
 # I really don't know why this works like it does... 
 @view_config(route_name='home')
 def index(request):
-    primt('HTTP Request -- home')
-    response = FileResponse(
-        'frontend/static/index.html',
-        request=request,
-        content_type='text/html'
-    )
-    return response
+    print('HTTP Request -- home')
+    PATH = "/home/tristan/Lighthome/frontend/static/index.html"
+#   response = FileResponse(
+#       'frontend/static/index.html',
+#       request=request,
+#       content_type='text/html'
+#    )
+    return FileResponse(PATH, request=request)
 
 @view_config(route_name='get_pattern_library', renderer='json')
 def get_pattern_library(request):
@@ -34,8 +36,10 @@ def set_pattern(request):
 
 @view_config(route_name='set_outlet_state')
 def set_outlet_state(request):
-    params = request.params
-    new_state = params['targetState']
+    print("POST request: set_outlet_state")
+    body = request.json_body
+    new_state = body['targetState']
+    print("targetState=", new_state)
     outlet_id = request.matchdict['outlet_id']
     outlets.send_outlet_signal(new_state, outlet_id)
     response = Response(
