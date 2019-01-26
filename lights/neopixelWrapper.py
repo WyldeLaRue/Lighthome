@@ -25,7 +25,7 @@ class Strip:
         self.neopixel_strip.begin()
 
     def setPixelColor(self, index, color): 
-        neopixel_color = neopixel.Color(color.green, color.red, color.blue) #, color.white)
+        neopixel_color = neopixel.Color(color.green, color.red, color.blue, color.white)
         self.neopixel_strip.setPixelColor(index, neopixel_color)            # the updated rpi_WS281x package seems to have given up 
                                                                             # support for rgbw strips. We'll just block white for now. 
     def show(self):

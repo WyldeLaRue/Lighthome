@@ -35,7 +35,7 @@ class Pattern:
 
 
     def get_wait_time(self, time, **kwargs):
-        return 0.01
+        return 10
 
 
 # Auxillary Functions
