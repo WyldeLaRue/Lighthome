@@ -35,12 +35,13 @@ mySwitch.prototype = {
   getSwitchOnCharacteristic: function (next) {
     request({
         url: this.getUrl,
-        method: 'GET'
+        method: 'GET',
+        json: true
     }, 
     function (error, response, body) {
       if (error) {
-        this.log('STATUS: ' + response.statusCode);
-        this.log(error.message);
+       // this.log('STATUS: ' + response);
+       // this.log(error.message);
         return next(error);
       }
       return next(null, body.currentState);
@@ -51,12 +52,13 @@ mySwitch.prototype = {
       url: this.postUrl,
       method: 'POST',
       body: {'targetState': on},
-      headers: {'Content-type': 'application/json'}
+      headers: {'Content-type': 'application/json'},
+      json: true
     },
     function (error, response) {
       if (error) {
-        this.log('STATUS: ' + response.statusCode);
-        this.log(error.message);
+        // this.log('STATUS: ' + response);
+        // this.log(error.message);
         return next(error);
       }
       return next();
