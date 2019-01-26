@@ -1,5 +1,11 @@
 
 #
+# Project Specific
+#
+lights-venv/
+
+
+#
 # MacOS
 #
 .DS_Store
@@ -72,3 +78,4 @@ coverage.xml
 #   Node
 #
 
+node_modules/
