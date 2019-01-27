@@ -13,24 +13,23 @@ LED_STRIP      = neopixel.ws.SK6812_STRIP_RGBW
 # Wrapper that goes around the Adafruit_NeoPixel class
 class Strip:
     def __init__(self, **kwargs):
-        led_count = kwargs['led_count']
-        led_pin = kwargs["led_pin"]
-        led_freq_hz = kwargs["led_freq_hz"]
-        led_dma = kwargs["led_dma"]
-        led_brightness = kwargs["led_brightness"]
-        led_invert = kwargs["led_invert"]
-        led_channel = kwargs["led_channel"]
-        #self.neopixel_strip = neopixel.Adafruit_NeoPixel(led_count, led_pin, led_freq_hz, led_dma, led_invert, led_brightness, led_channel, neopixel.ws.SK6812_STRIP_RGBW)
+#        led_count = kwargs['led_count']
+#        led_pin = kwargs["led_pin"]
+#        led_freq_hz = kwargs["led_freq_hz"]
+#        led_dma = kwargs["led_dma"]
+#        led_brightness = kwargs["led_brightness"]
+#        led_invert = kwargs["led_invert"]
+#        led_channel = kwargs["led_channel"]
+#        self.neopixel_strip = neopixel.Adafruit_NeoPixel(led_count, led_pin, led_freq_hz, led_dma, led_invert, led_brightness, led_channel, neopixel.ws.SK6812_STRIP_RGBW)
         self.neopixel_strip = neopixel.Adafruit_NeoPixel(led_count, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
         self.neopixel_strip.begin()
 
     def setPixelColor(self, index, color): 
         neopixel_color = neopixel.Color(color.green, color.red, color.blue, color.white)
-        self.neopixel_strip.setPixelColor(index, neopixel_color)            # the updated rpi_WS281x package seems to have given up 
-                                                                            # support for rgbw strips. We'll just block white for now. 
+        self.neopixel_strip.setPixelColor(index, neopixel_color)            
+                                                                           
     def show(self):
         self.neopixel_strip.show()
-        pass
 
     def numPixels(self):
         return self.neopixel_strip.numPixels()
