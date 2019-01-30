@@ -27,7 +27,8 @@ class Strip:
     def setPixelColor(self, index, color): 
         neopixel_color = neopixel.Color(color.green, color.red, color.blue, color.white)
         self.neopixel_strip.setPixelColor(index, neopixel_color)            
-                                                                           
+        # self.neopixel_strip.setPixelColor(index, 6029567)        
+
     def show(self):
         self.neopixel_strip.show()
 

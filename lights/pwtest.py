@@ -24,6 +24,5 @@ while True:
         color = active_pattern.get_color(pixel_index, time)
         strip.setPixelColor(pixel_index, Color(color.red, color.blue, color.green, color.white))
     strip.show()
-    sleep(0.02)
     time += 0.01
     time = time % 1

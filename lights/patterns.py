@@ -57,8 +57,13 @@ class Rainbow(Pattern):
         red, green, blue = colorsys.hsv_to_rgb(time, 1, 1)
         return Color(255*red, 255*green, 255*blue)
 
+class GentleWhite(Pattern):
+    def __init__(self):
+        self.id_name = "gentle_white"
+        self.display_name = "Gentle White"
 
-
+    def get_color(self, index, time, **kwargs):
+        return Color(0, 0, 0, 200)
 
 class RainbowCycle(Pattern):
     def __init__(self):
@@ -98,13 +103,14 @@ class RedTest(Pattern):
         self.display_name = "Red Test"
 
     def get_color(self, index, time, **kwargs):
+        normalized_sum = 0
         if 0 <= index < 60:
             normalized_sum = 0
         elif 60 < index < 120:
             normalized_sum = 0.01
         elif 180 < index < 240:
             normalized_sum = 0.02
-        elif 240 < index < 300:
+        elif 240 < index <= 300:
             normalized_sum = 1 - 0.01
         # normalized_sum = (normalized_sum)**1.5
         red, green, blue = colorsys.hsv_to_rgb(normalized_sum, 1, 1)
@@ -117,5 +123,6 @@ pattern_library = {
     "rainbow_cycle": RainbowCycle(),
     "adjusted_rainbow_cycle": AdjustedRainbowCycle(),
     "adjusted_rainbow": AdjustedRainbow(),
-    "red_test": RedTest()
+    "red_test": RedTest(),
+    "gentle_white": GentleWhite()
 }
